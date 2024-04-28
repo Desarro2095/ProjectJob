@@ -1,0 +1,59 @@
+﻿@model Job.DT.Users.UserDTO;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Registrate
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Login" asp-action="SingIn" method="post">
+                            <label asp-for="NameUser">Nombre usuario</label>
+                            <input class="form-control mb-3" type="text" placeholder="Usuario" asp-for="NameUser" required />
+                            <label asp-for="Email">Email</label>
+                            <input class="form-control mb-3" type="text" placeholder="Email" asp-for="Email" required />
+                            <label asp-for="Phone">Teléfono</label>
+                            <input class="form-control mb-3" type="number" placeholder="Teléfono" asp-for="Phone" required />
+                            <label asp-for="UserPassword">Contraseña</label>
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="UserPassword" required />
+                            @* @Html.DropDownList("Degrees", new SelectList(ViewBag.Degree, "DegreeId", "DegreeDescription"), new { @class="form-control mb-3" }) *@
+                            <label asp-for="DegreeId">Nivel academico</label>
+                            <select class="form-control mb-3" asp-for="DegreeId"
+                                    asp-items="@(new SelectList(ViewBag.Degree, nameof(ViewBag.Degree.DegreeId), nameof(ViewBag.Degree.DegreeDescription)))" required>
+                            </select>
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Registrarse</button>
+                            </div>
+                            @if(ViewData["Message"] != null){
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Message"]
+                                    </div>
+                                </div>
+                            }
+                            ¿Ya tienes una cuenta? <a href="@Url.Action("SingIn","Login")">Iniciar Sesión</a>
+                            ¿Eres una empresa? <a href="@Url.Action("SingInEmployer","Login")">Registrar empresa</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿@model Job.DT.Offer.OfferDTO;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hola @ViewData["nameUser"]</h1>
+    <p>Bienvenido a la versión que intenta imitar elempleo.com</p>
+</div>
+@if (ViewBag.Role == "Business")
+{
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Registrar oferta
+                    </div>
+                    <div class="card-body">
+                        <input class="btn btn-primary" type="button" value="Consultar aplicantes" onclick="location.href='@Url.Action("ViewApplies", "Offer", new { employerId = ViewBag.User.EmployerId })'" />
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Home" asp-action="SaveOffer" method="post">
+                            <label asp-for="OfferDescription">Descripción oferta</label>
+                            <input class="form-control mb-3" type="text" placeholder="Descripción oferta" asp-for="OfferDescription" required />
+                            <label asp-for="CurrentVacancy">Vacantes</label>
+                            <input class="form-control mb-3" type="number" placeholder="Vacantes" asp-for="CurrentVacancy" required />
+                            <input type="hidden" name="EmployerId" asp-for="EmployerId" value="@ViewBag.User.EmployerId" />
+
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Registrar</button>
+                            </div>
+                            @if (ViewData["Message"] != null)
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-info" role="alert">
+                                        @ViewData["Message"]
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (ViewBag.Role == "Person")
+{
+    @if (ViewData["Message"] != null)
+    {
+        <div class="form-group">
+            <div class="alert alert-info" role="alert">
+                @ViewData["Message"]
+            </div>
+        </div>
+    }
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Descripción de la vacante</th>
+                    <th scope="col">Vacantes</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var offer in ViewBag.Offer)
+                {
+                    <tr>
+                        <td>@offer.OfferDescription</td>
+                        <td>@offer.CurrentVacancy</td>
+                        <td>@offer.Empresa</td>
+                        <td><input class="btn btn-primary" type="button" value="Aplicar" onclick="location.href='@Url.Action("SaveOfferApply", "Home", new { userId = ViewBag.User.UserId, offerId = offer.OfferId })'" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+

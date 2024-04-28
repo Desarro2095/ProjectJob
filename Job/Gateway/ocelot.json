@@ -1,0 +1,159 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/User/GetUser",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7199
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/User/GetUser",
+      "UpstreamHttpMethod": [ "Get" ],
+      "SwaggerKey": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/GetEmployer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7199
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/User/GetEmployer",
+      "UpstreamHttpMethod": [ "Get" ],
+      "SwaggerKey": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/SaveUser",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7199
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/User/SaveUser",
+      "UpstreamHttpMethod": [ "Post" ],
+      "SwaggerKey": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/SaveEmployer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7199
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/User/SaveEmployer",
+      "UpstreamHttpMethod": [ "Post" ],
+      "SwaggerKey": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/GetDegree",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7199
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/User/GetDegree",
+      "UpstreamHttpMethod": [ "Get" ],
+      "SwaggerKey": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/GetIndustry",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7199
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/User/GetIndustry",
+      "UpstreamHttpMethod": [ "Get" ],
+      "SwaggerKey": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Offer/GetOffers",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/Offer/GetOffers",
+      "UpstreamHttpMethod": [ "Get" ],
+      "SwaggerKey": "Offer"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Offer/SaveOffer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/Offer/SaveOffer",
+      "UpstreamHttpMethod": [ "Post" ],
+      "SwaggerKey": "Offer"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Offer/SaveOfferApply",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/Offer/SaveOfferApply",
+      "UpstreamHttpMethod": [ "Post" ],
+      "SwaggerKey": "Offer"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Offer/GetOffersApply",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/Offer/GetOffersApply",
+      "UpstreamHttpMethod": [ "Post" ],
+      "SwaggerKey": "Offer"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "User",
+      "Config": [
+        {
+          "Name": "User API",
+          "Version": "v1",
+          "Url": "https://localhost:7199/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Offer",
+      "Config": [
+        {
+          "Name": "Offer API",
+          "Version": "v1",
+          "Url": "https://localhost:7047/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7037"
+  }
+}

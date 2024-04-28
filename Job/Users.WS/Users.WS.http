@@ -1,0 +1,6 @@
+@Users.WS_HostAddress = http://localhost:5027
+
+GET {{Users.WS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

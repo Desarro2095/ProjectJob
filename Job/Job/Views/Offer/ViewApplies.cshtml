@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Aplicantes</h1>
+    <p>Bienvenido a la versión que intenta imitar elempleo.com</p>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Persona</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Descripción de la oferta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offer in ViewBag.OfferApply)
+            {
+                <tr>
+                    <td>@offer.NameUser</td>
+                    <td>@offer.Email</td>
+                    <td>@offer.Phone</td>
+                    <td>@offer.OfferDescription</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

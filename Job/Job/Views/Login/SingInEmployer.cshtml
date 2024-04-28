@@ -1,0 +1,61 @@
+﻿@model Job.DT.Users.EmployerDTO;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Registrate
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Login" asp-action="SingInEmployer" method="post">
+                            <label asp-for="NameUser">Nombre empresa</label>
+                            <input class="form-control mb-3" type="text" placeholder="Nombre empresa" asp-for="NameUser" required />
+                            <label asp-for="Email">Email</label>
+                            <input class="form-control mb-3" type="text" placeholder="Email" asp-for="Email" required />
+                            <label asp-for="Phone">Teléfono</label>
+                            <input class="form-control mb-3" type="number" placeholder="Teléfono" asp-for="Phone" required />
+                            <label asp-for="CurrentEmployee">Cantidad de empleados</label>
+                            <input class="form-control mb-3" type="number" placeholder="Cantidad de empleados" asp-for="CurrentEmployee" required />
+                            <label asp-for="UserPassword">Contraseña</label>
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="UserPassword" required />
+                            <label asp-for="IndustryId">Industria</label>
+                            <select class="form-control mb-3" asp-for="IndustryId"
+                                    asp-items="@(new SelectList(ViewBag.Industry, nameof(ViewBag.Industry.IndustryId), nameof(ViewBag.Industry.IndustryDescription)))" required>
+                            </select>
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Registrarse</button>
+                            </div>
+                            @if(ViewData["Message"] != null){
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Message"]
+                                    </div>
+                                </div>
+                            }
+                            ¿Ya tienes una cuenta? <a href="@Url.Action("LogInEmployer","Login")">Iniciar Sesión</a>
+
+                            ¿Eres una empresa? <a href="@Url.Action("SingIn","Login")">Registrar persona</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
