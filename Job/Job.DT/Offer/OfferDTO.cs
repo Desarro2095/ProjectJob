@@ -12,6 +12,6 @@ namespace Job.DT.Offer
         public string OfferDescription { get; set; }
         public int CurrentVacancy { get; set; }
         public int EmployerId { get; set; }
-        public string Empresa { get; set; }
+        public string Empresa { get; set; } = string.Empty;
     }
 }

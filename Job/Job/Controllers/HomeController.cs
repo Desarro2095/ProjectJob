@@ -83,21 +83,13 @@ namespace Job.Controllers
         public IActionResult SaveOffer(OfferDTO offerDTO)
         {
             ResponseDTO<bool> result = offerService.SaveOffer(offerDTO);
-            if (!result.Result)
-            {
-                return RedirectToAction("Index", "Home", new { message = result.Messagge });
-            }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { message = result.Messagge });
         }
 
         public IActionResult SaveOfferApply(int userId, int offerId)
         {
             ResponseDTO<bool> result = offerService.SaveOfferApply(new OfferRequestDTO { OfferId = offerId, UserId = userId});
-            if (!result.Result)
-            {
-                return RedirectToAction("Index", "Home", new { message = result.Messagge });
-            }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { message = result.Messagge });
         }
 
     }
